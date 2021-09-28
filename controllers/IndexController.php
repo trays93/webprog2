@@ -4,6 +4,6 @@ class IndexController
 {
     public function indexAction()
     {
-        echo 'Index controller';
+        return new View('index', 'index');
     }
 }

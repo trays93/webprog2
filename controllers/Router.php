@@ -37,7 +37,6 @@ class Router
      */
     public static function route()
     {
-        echo 'Működök!<br>';
         $request = $_SERVER['QUERY_STRING'];
 
         if ($request != '') {
@@ -66,11 +65,12 @@ class Router
                 $method->invoke($controller);
             } else {
                 // TODO: 404
-                echo '404, a kért oldal nem létezik!';
+                echo '404, a kért oldal nem létezik!<br>';
             }
         } catch (Exception $ex) {
             // TODO: 404
-            echo '404, a kért oldal nem létezik!';
+            echo '404, a kért oldal nem létezik!<br>';
+            echo $ex->getMessage();
         }
     }
 }
