@@ -30,6 +30,13 @@ class View
         $this->data = $data; // TODO: filterezni az adatokat?
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param mixed $variable
+     * @param mixed $value
+     * @return void
+     */
     public function assign($variable, $value)
     {
         $this->data[$variable] = $value;
@@ -38,6 +45,7 @@ class View
     public function __destruct()
     {
         $viewName = $this->viewName;
+        $data = $this->data;
         include(SERVER_ROOT . 'views/main.php');
     }
 }
