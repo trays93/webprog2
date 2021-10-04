@@ -19,18 +19,18 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li>
                         <a href="/beadando" class="nav-link px-2 text-secondary">
-                            Home
+                            Kezdőoldal
                         </a>
                     </li>
                     <li>
                         <a href="/beadando/index/another" class="nav-link px-2 text-white">
-                            Page
+                            Aloldal
                         </a>
                     </li>
                 </ul>
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+                    <a type="button" class="btn btn-outline-light me-2">Bejelentkezés</button>
+                    <a href="/beadando/register" class="btn btn-warning">Regisztráció</a>
                 </div>
             </div>
         </div>
@@ -48,12 +48,12 @@
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li>
                     <a href="/beadando" class="nav-link px-2 text-secondary">
-                        Home
+                        Kezdőoldal
                     </a>
                 </li>
                 <li>
-                    <a href="/beadando/index/another" class="nav-link px-2 text-white">
-                        Page
+                    <a href="/beadando/index/another" class="nav-link px-2 text-secondary">
+                        Aloldal
                     </a>
                 </li>
             </ul>
