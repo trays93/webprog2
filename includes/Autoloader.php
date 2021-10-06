@@ -19,8 +19,17 @@ class Autoloader
             $file = SERVER_ROOT . "controllers/{$className}.php";
             if (file_exists($file)) {
                 include_once($file);
-            } else {
-                throw new Exception("Nem tudom betölteni a(z) $file-t");
+            }
+        });
+    }
+
+    public static function loadModels()
+    {
+        spl_autoload_register(function($className) {
+            $className = ucfirst(trim($className));
+            $file = SERVER_ROOT . "models/{$className}.php";
+            if (file_exists($file)) {
+                include_once($file);
             }
         });
     }

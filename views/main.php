@@ -29,8 +29,13 @@
                     </li>
                 </ul>
                 <div class="text-end">
-                    <a type="button" class="btn btn-outline-light me-2">Bejelentkezés</button>
+                    <?php if (isset($_SESSION['user'])): ?>
+                    Bejelentkezett: <?= $_SESSION['user']->print() ?>
+                    <a href="/beadando/logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
+                    <?php else: ?>
+                    <a href="/beadando/login" class="btn btn-outline-light me-2">Bejelentkezés</a>
                     <a href="/beadando/register" class="btn btn-warning">Regisztráció</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

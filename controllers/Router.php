@@ -57,7 +57,7 @@ class Router
             }
         }
 
-        try {
+        if (class_exists(Router::$controller)) {
             $controller = new Router::$controller();
             $class = new ReflectionClass($controller);
             if ($class->hasMethod(Router::$controllerAction)) {
@@ -65,12 +65,11 @@ class Router
                 $method->invoke($controller);
             } else {
                 // TODO: 404
-                echo '404, a kért oldal nem létezik!<br>';
+                return new View('error', '404', []);
             }
-        } catch (Exception $ex) {
+        } else {
             // TODO: 404
-            echo '404, a kért oldal nem létezik!<br>';
-            echo $ex->getMessage();
+            return new View('error', '404', []);
         }
     }
 }

@@ -2,6 +2,11 @@
 
 class RegisterController
 {
+    /**
+     * Regisztrációs űrlapot megjelenít és feldolgoz.
+     *
+     * @return void
+     */
     public function indexAction()
     {
         $data = $this->sanitizeData($_POST);
@@ -13,7 +18,25 @@ class RegisterController
                     'errors' => $validationErrors,
                 ]);
             } else {
-                // TODO: elmenteni az adatokat!
+                $register = new Register($data['email'], $data['firstname'], $data['lastname'], $data['password']);
+
+                try {
+                    $conn = Database::getConnection();
+                    $stmt = $conn->prepare("INSERT INTO user (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
+                    $stmt->bindParam(':firstName', $register->getFirstName());
+                    $stmt->bindParam(':lastName', $register->getLastName());
+                    $stmt->bindParam(':email', $register->getEmail());
+                    $stmt->bindParam(':password', $register->getPassword());
+                    $stmt->execute();
+                    
+                } catch(PDOException $e) {
+                    return new View('error', 'error', [
+                        'error' => $e->getMessage()
+                    ]);
+                } finally {
+                    $conn = null;
+                }
+
                 header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");
             }
         } else {
