@@ -23,10 +23,10 @@ class RegisterController
                 try {
                     $conn = Database::getConnection();
                     $stmt = $conn->prepare("INSERT INTO user (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
-                    $stmt->bindParam(':firstName', $register->getFirstName());
-                    $stmt->bindParam(':lastName', $register->getLastName());
-                    $stmt->bindParam(':email', $register->getEmail());
-                    $stmt->bindParam(':password', $register->getPassword());
+                    $stmt->bindValue(':firstName', $register->getFirstName());
+                    $stmt->bindValue(':lastName', $register->getLastName());
+                    $stmt->bindValue(':email', $register->getEmail());
+                    $stmt->bindValue(':password', $register->getPassword());
                     $stmt->execute();
                     
                 } catch(PDOException $e) {
@@ -37,7 +37,10 @@ class RegisterController
                     $conn = null;
                 }
 
-                header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");
+                return new View('register', 'index', [
+                    'data' => $data,
+                    'success' => 'Sikeres regisztráció!',
+                ]);
             }
         } else {
             return new View('register', 'index');

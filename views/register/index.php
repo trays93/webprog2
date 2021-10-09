@@ -1,6 +1,11 @@
 <div class="row justify-content-center">
     <div class="col-4 mt-5">
         <form action="/beadando/register" method="POST">
+            <?php if (isset($data['success'])) : ?>
+            <div class="alert alert-success" role="alert">
+                <h2><?= $data['success'] ?></h2>
+            </div>
+            <?php endif; ?>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" name="email" value="<?= isset($data['data']['email']) ? $data['data']['email'] : '' ?>"
