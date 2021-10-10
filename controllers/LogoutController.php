@@ -4,7 +4,7 @@ class LogoutController
 {
     public function indexAction()
     {
-        $_SESSION['uesr'] = null;
+        $_SESSION['user'] = null;
         session_destroy();
         
         header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");

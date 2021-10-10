@@ -57,11 +57,6 @@ class User
         return $this;
     }
 
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
     public function print(): string
     {
         return $this->getLastName() . ' ' . $this->getFirstName() . ' (' . $this->getEmail() . ')';

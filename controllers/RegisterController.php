@@ -95,7 +95,7 @@ class RegisterController
         if (empty($data['lastname'])) {
             $validationErrors['lastname'] = 'A keresztnév nem lehet üres!';
         } else if (!preg_match('/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/', $data['lastname'])) {
-            $validationErrors['lasstname'] = 'A keresztnév csak betűket és szóközt tartalmazhat';
+            $validationErrors['lastname'] = 'A keresztnév csak betűket és szóközt tartalmazhat';
         }
 
         // Jelszó ellenőrzése
