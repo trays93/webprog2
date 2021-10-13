@@ -10,37 +10,8 @@
     <title>Beadandó feladat</title>
 </head>
 <body>
-    <header class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/beadando" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    Beadandó
-                </a>
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li>
-                        <a href="/beadando" class="nav-link px-2 text-secondary">
-                            Kezdőoldal
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/beadando/index/another" class="nav-link px-2 text-white">
-                            Aloldal
-                        </a>
-                    </li>
-                </ul>
-                <div class="text-end">
-                    <?php if (isset($_SESSION['user'])): ?>
-                    Bejelentkezett: <?= $_SESSION['user']->print() ?>
-                    <a href="/beadando/logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
-                    <?php else: ?>
-                    <a href="/beadando/login" class="btn btn-outline-light me-2">Bejelentkezés</a>
-                    <a href="/beadando/register" class="btn btn-warning">Regisztráció</a>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <?php include_once('header.php'); ?>
+    
     <main class="container">
         <?php
         // TODO ide jönnek az oldalankénti view-k
