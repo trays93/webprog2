@@ -15,6 +15,7 @@ class Autoloader
     public static function loadControllers()
     {
         spl_autoload_register(function($className) {
+
             $className = ucfirst(trim($className));
             $file = SERVER_ROOT . "controllers/{$className}.php";
             if (file_exists($file)) {

@@ -11,4 +11,5 @@ class IndexController
     {
         return new View('index', 'another', ['Másik']);
     }
+
 }
