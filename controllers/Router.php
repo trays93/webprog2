@@ -40,7 +40,7 @@ class Router
         $request = $_SERVER['QUERY_STRING'];
 
         if ($request != '') {
-            $params = explode('/', $request);
+            $params = explode('/', explode('&', $request)[0]);
 
             switch(count($params)) {
                 case 1:
