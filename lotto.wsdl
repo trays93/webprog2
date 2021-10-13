@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/beadando/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/beadando/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/beadando/">
+      <xsd:complexType name="Huzas">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="ev" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="het" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="szamok" type="tns:intArray" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="kovetkezoHuzasId" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="megelozoHuzasId" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="talalatok" type="tns:TalalatArray" minOccurs="0" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="intArray">
+        <xsd:complexContent>
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute ref="soap-enc:arrayType" wsdl:arrayType="xsd:int[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Talalat">
+        <xsd:all>
+          <xsd:element name="talalat" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="darab" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="ertek" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getHuzasRequest">
+    <wsdl:part name="id" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="getHuzasResponse">
+    <wsdl:part name="getHuzasReturn" type="tns:Huzas"/>
+  </wsdl:message>
+  <wsdl:portType name="LottoPortType">
+    <wsdl:operation name="getHuzas">
+      <wsdl:documentation>Lekérdezi a húzást azonosító alapján.</wsdl:documentation>
+      <wsdl:input message="tns:getHuzasRequest"/>
+      <wsdl:output message="tns:getHuzasResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LottoBinding" type="tns:LottoPortType">
+    <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHuzas">
+      <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/beadando/server.php?method=getHuzas" style="rpc"/>
+      <wsdl:input>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Lotto">
+    <wsdl:documentation/>
+    <wsdl:port name="LottoPort" binding="tns:LottoBinding">
+      <soap-env:address location="http://localhost/beadando/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
