@@ -30,21 +30,50 @@ $huzas = $data['huzas'];
                 <tbody>
                     <?php foreach($huzas->talalatok as $talalat): ?>
                         <tr>
-                            <td><?= $talalat->talalat ?></td>
-                            <td><?= $talalat->darab ?></td>
-                            <td><?= $talalat->ertek ?></td>
+                            <td><?= number_format($talalat->talalat, 0, "", "&#8239;"); ?></td>
+                            <td><?= number_format($talalat->darab, 0, "", "&#8239;"); ?></td>
+                            <td><?= number_format($talalat->ertek, 0, "", "&#8239;")." Ft"; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         </div>
+        <div class="box secondary no-shadow footer clear">
+                        <div class="title clear"><h3>Keresés a korábbi sorsolások között játékhét alapján</h3></div>
+                        <div class="clear" id="downloads">
+                            <div class="col col-1">
+                                <form action="/beadando/previous" method="post" class="ng-pristine ng-valid">
+                                    <div class="selector" id="uniform-year" style="width: 102px;">
+                                    <span style="width: 98px; user-select: none;"></span>
+                                            <select class="custom-select ng-isolate-scope" name="year" id="year">
+                                                <?php foreach($huzas->evek as $ev) :
+                                                    if($ev != 0) {?>
+                                                        <option <?= $huzas->ev == $ev ? "selected" : "" ?> value="<?= $ev ?>"><?= $ev ?></option>
+                                                    <?php }
+                                                endforeach ?>
+                                            </select>
+                                        </div>
+                                        <div class="selector" id="uniform-week" style="width: 102px;">
+                                            <select class="custom-select ng-isolate-scope" name="week" id="week">
+                                                <?php for($i=1;$i <= 53;$i++) : ?>
+                                                    <option <?= $huzas->het == $i ? "selected" : "" ?> value="<?= $i ?>"><?= $i.". hét" ?></option>
+                                                <?php endfor ?>
+                                            </select>
+                                        </div>
+                                        <input class="button button-more" type="submit" name="yt1" value="Keresés">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
         <div class="card-footer">
             <?php if($huzas->megelozoHuzasId !== 0): ?>
             <a href="?huzas_id=<?= $huzas->megelozoHuzasId ?>" class="btn btn-danger">Előző</a>
             <?php endif; ?>
             <?php if($huzas->kovetkezoHuzasId !== 0): ?>
-            <a href="?huzas_id=<?= $huzas->kovetkezoHuzasId ?>" class="btn btn-danger">Következő</a>
+            <a href="?huzas_id=<?= $huzas->kovetkezoHuzasId ?>" class="btn btn-danger" style="position: absolute; right: 20px;">Következő</a>
             <?php endif; ?>
         </div>
     </div>
 </div>
+

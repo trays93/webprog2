@@ -40,6 +40,13 @@ class Huzas
     public $talalatok;
 
     /**
+     * Az összes olyan év, amiben volt húzás
+     * 
+     * @var int[]
+     */
+    public $evek;
+
+    /**
      * @param integer $id
      * @param integer $ev
      * @param integer $het
@@ -53,6 +60,7 @@ class Huzas
         $this->talalatok        = [];
         $this->kovetkezoHuzasId = 0;
         $this->megelozoHuzasId  = 0;
+        $this->evek             = [];
     }
 
     /**
@@ -64,6 +72,18 @@ class Huzas
     public function setSzamok(array $szamok): self
     {
         $this->szamok = $szamok;
+        return $this;
+    }
+
+        /**
+     * A lekérdezett éveket állítja be
+     *
+     * @param int[] $evek
+     * @return self
+     */
+    public function setEvek(array $evek): self
+    {
+        $this->evek = $evek;
         return $this;
     }
 

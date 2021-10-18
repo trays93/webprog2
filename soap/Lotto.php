@@ -44,7 +44,8 @@ class Lotto
                 $huzas->setSzamok($this->getHuzasSzamok($huzas->id))
                     ->setTalalatok($this->getHuzasTalalatok($huzas->id))
                     ->setMegelozoHuzasId($this->getElozoHuzasId($huzas->id))
-                    ->setKovetkezoHuzasId($this->getKovetkezoHuzasId($huzas->id));
+                    ->setKovetkezoHuzasId($this->getKovetkezoHuzasId($huzas->id))
+                    ->setEvek($this->getEvek());
 
                 return $huzas;
             } else {
@@ -143,6 +144,61 @@ class Lotto
             return $kovetkezoId;
         } else {
             return $kovetkezoId;
+        }
+    }
+
+    /**
+     * Az év kiválasztásához kérdezi le a húzás éveit
+     *
+     * @return int[]
+     */
+    private function getEvek(): array
+    {   
+        $evek = [];
+        try {
+            
+            
+            $stmt = $this->conn->prepare("SELECT `huzas`.`ev`, COUNT(`huzas`.`id`) AS 'countYears' FROM `huzas` GROUP BY `huzas`.`ev` ORDER BY `huzas`.`ev` DESC;");
+            $stmt->execute();
+
+            foreach ($stmt->fetchAll() as $ev) {
+                $evek[] = $ev[0];
+            }
+
+            return $evek;
+
+        } catch (PDOException $e) {
+        return $evek;
+        }
+    }
+
+    /**
+     * Év és dátum alapján vissza adja az id-t
+     *
+     * @param integer $year
+     * @param integer $weak
+     * @return int
+     */
+    public function getIdFromYW(int $year, int $week): int
+    {
+        
+        $id = -1;
+        try {
+            
+            
+            $stmt = $this->conn->prepare("SELECT `huzas`.`id` FROM `huzas` WHERE `huzas`.`ev` = :year AND `huzas`.`het` = :week;");
+            $stmt->bindValue(':year', $year);
+            $stmt->bindValue(':week', $week);
+            $stmt->execute();
+
+            if ($stmt->rowCount() === 1) {
+                $id = $stmt->fetchColumn();
+            }
+
+            return $id;
+
+        } catch (PDOException $e) {
+        return $id;
         }
     }
 }

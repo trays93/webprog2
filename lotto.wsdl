@@ -11,6 +11,7 @@
           <xsd:element name="kovetkezoHuzasId" type="xsd:int" minOccurs="0" maxOccurs="1"/>
           <xsd:element name="megelozoHuzasId" type="xsd:int" minOccurs="0" maxOccurs="1"/>
           <xsd:element name="talalatok" type="tns:TalalatArray" minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="evek" type="tns:intArray" minOccurs="0" maxOccurs="1"/>
         </xsd:all>
       </xsd:complexType>
       <xsd:complexType name="intArray">
@@ -35,17 +36,38 @@
   <wsdl:message name="getHuzasResponse">
     <wsdl:part name="getHuzasReturn" type="tns:Huzas"/>
   </wsdl:message>
+  <wsdl:message name="getIdFromYWRequest">
+    <wsdl:part name="year" type="xsd:int"/>
+    <wsdl:part name="week" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="getIdFromYWResponse">
+    <wsdl:part name="getIdFromYWReturn" type="xsd:int"/>
+  </wsdl:message>
   <wsdl:portType name="LottoPortType">
     <wsdl:operation name="getHuzas">
       <wsdl:documentation>Lekérdezi a húzást azonosító alapján.</wsdl:documentation>
       <wsdl:input message="tns:getHuzasRequest"/>
       <wsdl:output message="tns:getHuzasResponse"/>
     </wsdl:operation>
+    <wsdl:operation name="getIdFromYW">
+      <wsdl:documentation>Év és dátum alapján vissza adja az id-t</wsdl:documentation>
+      <wsdl:input message="tns:getIdFromYWRequest"/>
+      <wsdl:output message="tns:getIdFromYWResponse"/>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LottoBinding" type="tns:LottoPortType">
     <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="getHuzas">
       <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/beadando/server.php?method=getHuzas" style="rpc"/>
+      <wsdl:input>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIdFromYW">
+      <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/beadando/server.php?method=getIdFromYW" style="rpc"/>
       <wsdl:input>
         <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
       </wsdl:input>
