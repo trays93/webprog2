@@ -47,11 +47,11 @@ $huzas = $data['huzas'];
                                     <div class="selector" id="uniform-year" style="width: 102px;">
                                     <span style="width: 98px; user-select: none;"></span>
                                             <select class="custom-select ng-isolate-scope" name="year" id="year">
-                                                <?php foreach($huzas->evek as $ev) :
-                                                    if($ev != 0) {?>
+                                                <?php foreach($huzas->evek as $ev) : ?>
+                                                    <?php if($ev != 0) : ?>
                                                         <option <?= $huzas->ev == $ev ? "selected" : "" ?> value="<?= $ev ?>"><?= $ev ?></option>
-                                                    <?php }
-                                                endforeach ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                         <div class="selector" id="uniform-week" style="width: 102px;">
