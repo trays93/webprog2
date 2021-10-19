@@ -63,9 +63,9 @@ $huzas = $data['huzas'];
                                         </div>
                                         <input class="button button-more" type="submit" name="yt1" value="Keresés">
                                     </form>
-                                </div>
                             </div>
                         </div>
+                    </div>
         <div class="card-footer">
             <?php if($huzas->megelozoHuzasId !== 0): ?>
             <a href="?huzas_id=<?= $huzas->megelozoHuzasId ?>" class="btn btn-danger">Előző</a>

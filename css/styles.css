@@ -182,3 +182,7 @@
     width: 110px;
     text-decoration: none;
 }
+
+header {
+    margin-bottom: 30px;
+}
