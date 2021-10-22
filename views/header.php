@@ -4,10 +4,6 @@ $menu = [
         'name' => 'Kezdőoldal',
         'ref' => '/beadando'
     ],
-    'another' => [
-        'name' => 'Aloldal',
-        'ref' => '/beadando/index/another'
-    ],
     'previous' => [
         'name' => 'Előző sorsolások',
         'ref' => '/beadando/previous'
@@ -16,6 +12,10 @@ $menu = [
         'name' => 'Számstatisztika',
         'ref' => '/beadando/statistics'
     ],
+    'arfolyam' => [
+        'name' => 'Árfolyam',
+        'ref' => '/beadando/index/arfolyam'
+    ]
 ];
 ?>
 
