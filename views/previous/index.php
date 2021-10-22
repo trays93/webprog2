@@ -45,24 +45,24 @@ $huzas = $data['huzas'];
                             <div class="col col-1">
                                 <form action="/beadando/previous" method="post" class="ng-pristine ng-valid">
                                     <div class="selector" id="uniform-year" style="width: 102px;">
-                                    <span style="width: 98px; user-select: none;"></span>
-                                            <select class="custom-select ng-isolate-scope" name="year" id="year">
-                                                <?php foreach($huzas->evek as $ev) : ?>
-                                                    <?php if($ev != 0) : ?>
-                                                        <option <?= $huzas->ev == $ev ? "selected" : "" ?> value="<?= $ev ?>"><?= $ev ?></option>
-                                                    <?php endif; ?>
-                                                <?php endforeach ?>
+                                        <span style="width: 98px; user-select: none;"></span>
+                                        <select class="custom-select ng-isolate-scope" name="year" id="year">
+                                            <?php foreach($huzas->evek as $ev) :
+                                                if($ev != 0) {?>
+                                                    <option <?= $huzas->ev == $ev ? "selected" : "" ?> value="<?= $ev ?>"><?= $ev ?></option>
+                                                <?php }
+                                            endforeach ?>
+                                        </select>
+                                    </div>
+                                    <div class="selector" id="uniform-week" style="width: 102px;">
+                                        <select class="custom-select ng-isolate-scope" name="week" id="week">
+                                            <?php for($i=1;$i <= 53;$i++) : ?>
+                                                <option <?= $huzas->het == $i ? "selected" : "" ?> value="<?= $i ?>"><?= $i.". hét" ?></option>
+                                            <?php endfor ?>
                                             </select>
-                                        </div>
-                                        <div class="selector" id="uniform-week" style="width: 102px;">
-                                            <select class="custom-select ng-isolate-scope" name="week" id="week">
-                                                <?php for($i=1;$i <= 53;$i++) : ?>
-                                                    <option <?= $huzas->het == $i ? "selected" : "" ?> value="<?= $i ?>"><?= $i.". hét" ?></option>
-                                                <?php endfor ?>
-                                            </select>
-                                        </div>
-                                        <input class="button button-more" type="submit" name="yt1" value="Keresés">
-                                    </form>
+                                    </div>
+                                    <input class="button button-more" type="submit" name="source" value="Keresés">
+                                </form>
                             </div>
                         </div>
                     </div>
