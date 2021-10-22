@@ -12,7 +12,7 @@ $conn = new PDO(
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 echo "Csatlakozás...\n";
-
+/*
 $file = fopen('./huzas.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO huzas (id, ev, het) VALUES (:id, :ev, :het)");
@@ -33,7 +33,7 @@ if ($file) {
     fclose($file);
     echo "Húzások beszúrva\n";
 }
-
+*/
 $file = fopen('./huzott.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO huzott (id, huzas_id, szam) VALUES (:id, :huzas_id, :szam)");
@@ -54,7 +54,7 @@ if ($file) {
     fclose($file);
     echo "Húzott számok beszúrva\n";
 }
-
+/*
 $file = fopen('./nyeremeny.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO nyeremeny (id, huzas_id, talalat, darab, ertek) VALUES (:id, :huzas_id, :talalat, :darab, :ertek)");
@@ -76,6 +76,6 @@ if ($file) {
 
     fclose($file);
     echo "Nyeremények beszúrva\n";
-}
+}*/
 
 $conn = null;

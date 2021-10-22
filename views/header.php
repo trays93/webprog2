@@ -2,19 +2,28 @@
 $menu = [
     'home' => [
         'name' => 'Kezdőoldal',
-        'ref' => '/beadando'
+        'ref' => '/beadando',
+        'login' => 0
     ],
     'previous' => [
         'name' => 'Előző sorsolások',
-        'ref' => '/beadando/previous'
+        'ref' => '/beadando/previous',
+        'login' => 0
     ],
     'statistics' => [
         'name' => 'Számstatisztika',
-        'ref' => '/beadando/statistics'
+        'ref' => '/beadando/statistics',
+        'login' => 0
     ],
     'arfolyam' => [
         'name' => 'Árfolyam',
-        'ref' => '/beadando/index/arfolyam'
+        'ref' => '/beadando/index/arfolyam',
+        'login' => 0
+    ],
+    'news' => [
+        'name' => 'Hírek',
+        'ref' => '/beadando/news',
+        'login' => 1
     ]
 ];
 ?>
@@ -27,12 +36,18 @@ $menu = [
  			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
  				<ul class="navbar-nav mr-auto btn-group">
-				 	<?php foreach ($menu as $m) { ?>
-						<li class="nav-item">
-					    	<b><a class="nav-link" href="<?= $m['ref'] ?>">
-                            <?= $m['name'] ?></a></b>
-						</li>
-					<?php } ?>
+				 	<?php foreach ($menu as $m) { 
+                         if($m['login'] == 0) {?>
+						    <li class="nav-item">
+					    	    <b><a class="nav-link" href="<?= $m['ref'] ?>">
+                                <?= $m['name'] ?></a></b>
+						    </li> <?php }
+                        elseif ($m['login'] == 1 && isset($_SESSION['user'])) { ?>
+                            <li class="nav-item">
+					    	    <b><a class="nav-link" href="<?= $m['ref'] ?>">
+                                <?= $m['name'] ?></a></b>
+						    </li>
+					<?php } } ?>
  				</ul>
  			</div>
             <div class="text-end">

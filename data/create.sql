@@ -9,6 +9,14 @@ CREATE TABLE `user` (
   PRIMARY KEY(`id`)
 );
 
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_time` timestamp NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  PRIMARY KEY(`id`)
+);
+
 CREATE TABLE `huzas` (
     `id` int(11) NOT NULL,
     `ev` int(11) NOT NULL,
@@ -39,3 +47,7 @@ FOREIGN KEY (`huzas_id`) REFERENCES `huzas`(`id`);
 ALTER TABLE `nyeremeny`
 ADD CONSTRAINT FK_NYEREMENY
 FOREIGN KEY (`huzas_id`) REFERENCES `huzas`(`id`);
+
+ALTER TABLE `news`
+ADD CONSTRAINT FK_NEWS
+FOREIGN KEY (`user_id`) REFERENCES `user`(`id`);
