@@ -55,5 +55,3 @@
         </form>
     </div>
 </div>
-
-<pre><?= var_dump($data) ?></pre>
