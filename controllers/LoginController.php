@@ -6,12 +6,6 @@ class LoginController
     {
         $data = $this->sanitizeData($_POST);
 
-        /*********************************** ZOLI TESZT **********************************/
-        echo '<br>data: ';
-        var_dump($data);
-        echo ' LoginController.php';
-        /*********************************** ZOLI TESZT **********************************/
-
         if (count($data) > 0) {
             $login = new Login($data['email'], $data['password']);
 
