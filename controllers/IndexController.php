@@ -35,7 +35,22 @@ class IndexController
             $result = new SimpleXMLElement($client->GetExchangeRates($param)->GetExchangeRatesResult);
 
             foreach($result->Day->Rate as $rate) {
-                $arfolyam[(string) $rate->attributes()->curr] = (string) $rate;
+                $arfolyam['napiArfolyam'][(string) $rate->attributes()->curr] = (string) $rate;
+            }
+
+            $param = [
+                'startDate' => (new DateTime($_POST['datum']))->modify('first day of this month')->format('Y-m-d'),
+                'endDate' => (new DateTime($_POST['datum']))->modify('last day of this month')->format('Y-m-d'),
+                'currencyNames' => $_POST['valuta1'] . ',' . $_POST['valuta2']
+            ];
+            $result = new SimpleXMLElement($client->GetExchangeRates($param)->GetExchangeRatesResult);
+
+            foreach($result->Day as $day) {
+                $arfolyam['dates'][] = (string) $day->attributes()->date;
+
+                foreach ($day->Rate as $rate) {
+                    $arfolyam[(string) $rate->attributes()->curr][] = (string) $rate;
+                }
             }
         }
 
