@@ -17,11 +17,17 @@ class User
      */
     private $lastName;
 
-    public function __construct(string $email, string $firstName, string $lastName)
+    /**
+     * @var int
+     */
+    private $user_id;
+
+    public function __construct(string $email, string $firstName, string $lastName, int $user_id)
     {
         $this->setEmail($email)
             ->setFirstName($firstName)
-            ->setLastName($lastName);
+            ->setLastName($lastName)
+            ->setUserId($user_id);
     }
 
     public function getEmail(): string
@@ -54,6 +60,17 @@ class User
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
+        return $this;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(int $user_id): self
+    {
+        $this->user_id = $user_id;
         return $this;
     }
 

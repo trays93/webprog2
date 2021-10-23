@@ -11,7 +11,7 @@ class LoginController
 
             try {
                 $conn = Database::getConnection();
-                $stmt = $conn->prepare("SELECT email, firstName, lastName FROM user WHERE email = :email AND password = :password");
+                $stmt = $conn->prepare("SELECT email, firstName, lastName, id FROM user WHERE email = :email AND password = :password");
                 $stmt->bindValue(':email', $login->getEmail());
                 $stmt->bindValue(':password', $login->getPassword());
                 $stmt->execute();
@@ -20,7 +20,7 @@ class LoginController
                 if ($stmt->rowCount() === 1) {
                     // siker
                     $result = $stmt->fetch();
-                    $user = new User($result['email'], $result['firstName'], $result['lastName']);
+                    $user = new User($result['email'], $result['firstName'], $result['lastName'], $result['id']);
                     $_SESSION['user'] = $user;
 
                     header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");

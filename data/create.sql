@@ -1,7 +1,7 @@
 CREATE DATABASE `beadando`;
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE `user` (
 );
 
 CREATE TABLE `news` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `date_time` timestamp NOT NULL,
+  `date_time` varchar(255) NOT NULL,
   `comment` varchar(255) NOT NULL,
   PRIMARY KEY(`id`)
 );
