@@ -22,8 +22,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <?php
+    //Autoloader scripts -- A lényeg, hogy a js fájl azonos néven legyen elmentve, mint
+    //mint az oldal (ez alól kivétel a kezdő oldal, mert ott az URL-ban nics hozzá meghatározva név, ezért a kezdőoldalnál a js fájl neve home.js)
+    //Aloldalnál pl.: /previous/404  a js elnevezése 'previous404.js'-nek kell lennie
+    $title = $_SERVER['QUERY_STRING'];
+    $filename = $title == '' ? 'home' : str_replace('/', '', explode('&', $title)[0]);
+    if(file_exists('scripts/'.$filename.'.js'))  { ?>
+        <script type="text/javascript" src=<?='scripts/'.$filename.'.js'?>></script>
+    <?php }
+
+    //Autoloader css fájlokhoz oldalanként, script-ekhez hasonló logikával
+    if(file_exists('css/'.$filename.'.css'))  { ?>
+        <link rel="stylesheet" href=<?='css/'.$filename.'.css'?> type="text/css">
+    <?php }
+    ?>
+
 </head>
 <body class="d-flex flex-column h-100">
+
+    
+
+    
     <?php include_once('header.php'); ?>
     
     <main class="container">
