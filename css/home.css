@@ -1,0 +1,44 @@
+.col-sm-12.countdown {
+  background-color: #e9ecef;
+  margin: 0 auto;
+  padding: 10px 0px;
+  text-align: center;
+}
+
+.col-sm-12 {
+    margin: 20px 0;
+}
+
+
+h2 {
+  font-weight: normal;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+}
+
+.timer.li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+.timer.span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+@media all and (max-width: 768px) {
+h2 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+  
+.timer.li {
+    font-size: calc(1.125rem * var(--smaller));
+  }
+  
+.timer.span {
+    font-size: calc(3.375rem * var(--smaller));
+  }
+}
