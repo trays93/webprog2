@@ -31,7 +31,7 @@ $menu = [
 <header class="p-3 bg-dark text-white">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark" >
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation" style="margin: 10px;">
  				<span class="navbar-toggler-icon"></span>
  			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">

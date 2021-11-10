@@ -10,7 +10,7 @@ class PreviousController
             $id = $_GET['huzas_id'];
         }
 
-        $client = new SoapClient('http://localhost/beadando/lotto.wsdl');
+        $client = new SoapClient(SITE_ROOT . '/beadando/lotto.wsdl');
 
         if (isset($_POST['year']) && intval($_POST['year']) && isset($_POST['week']) && intval($_POST['week']))
         {

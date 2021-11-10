@@ -1,3 +1,4 @@
+
 CREATE DATABASE `beadando`;
 
 CREATE TABLE `user` (
