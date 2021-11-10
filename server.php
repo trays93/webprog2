@@ -4,7 +4,7 @@ define('SERVER_ROOT', "{$_SERVER['DOCUMENT_ROOT']}/beadando/");
 define('FILE_NAME', "lotto.wsdl");
 
 //XAMP
-define('WSDL_SITE_ROOT', 'http://localhost');
+define('SITE_ROOT', 'http://localhost');
 
 // ONLINE
 // define('SITE_ROOT', 'http://hatoslotto.nhely.hu');

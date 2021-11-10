@@ -20,7 +20,8 @@ class PreviousController
         }
         
         if($id == -1) {
-            return new View('previous', '404', ['HIBA']);
+            return new View('error', 'error',
+                    ['error' => '<h4>A keresett dátumnál nem történ sorsolás </h3><a href="\beadando\previous" class="button button-back">Vissza</a>']);
         }
 
         $huzas = $client->getHuzas($id);

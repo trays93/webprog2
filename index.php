@@ -3,7 +3,7 @@
 define('SERVER_ROOT', "{$_SERVER['DOCUMENT_ROOT']}/beadando/");
 
 //XAMP
-define('SITE_ROOT', 'http://localhost/beadando'); 
+define('SITE_ROOT', 'http://localhost'); 
 
 // ONLINE
 // define('SITE_ROOT', 'http://hatoslotto.nhely.hu');
