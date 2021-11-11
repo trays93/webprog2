@@ -11,10 +11,10 @@
         <h2 id="headline" style="margin: 20px 0 0 0;">A következő sorsolás: vasárnap 16:00 (DUNA TV)</h2>
         <div id="countdown">
             <ul>
-                <li class="timer li"><span id="days" class="timer span"></span>days</li>
-                <li class="timer li"><span id="hours" class="timer span"></span>Hours</li>
-                <li class="timer li"><span id="minutes" class="timer span"></span>Minutes</li>
-                <li class="timer li"><span id="seconds" class="timer span"></span>Seconds</li>
+                <li class="timer li"><span id="days" class="timer span"></span>nap</li>
+                <li class="timer li"><span id="hours" class="timer span"></span>óra</li>
+                <li class="timer li"><span id="minutes" class="timer span"></span>perc</li>
+                <li class="timer li"><span id="seconds" class="timer span"></span>m.perc</li>
             </ul>
             <p id="demo"></p>
         </div>
