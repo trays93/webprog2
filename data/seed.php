@@ -32,69 +32,72 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 echo "Csatlakozás...\n";
 
-$file = fopen('./huzas.txt', 'r');
+$file = fopen('./gep.txt', 'r');
 if ($file) {
-    $stmt = $conn->prepare("INSERT INTO huzas (id, ev, het) VALUES (:id, :ev, :het)");
+    $stmt = $conn->prepare("INSERT INTO gep (id, hely, tipus, ipcim) VALUES (:id, :hely, :tipus, :ipcim)");
     
-    echo "Húzások beszúrása...\n";
+    echo "Gépek beszúrása...\n";
 
+    $line = fgets($file);
+    while(!feof($file)) {
+        $line = fgets($file);
+        $line = explode("\t", $line);
+        if (count($line) === 4) {
+            $stmt->bindValue(':id', $line[0]);
+            $stmt->bindValue(':hely', $line[1]);
+            $stmt->bindValue(':tipus', $line[2]);
+            $stmt->bindValue(':ipcim', $line[3]);
+            $stmt->execute();
+        }
+    }
+
+    fclose($file);
+    echo "Gépek beszúrva\n";
+}
+
+$file = fopen('./szoftver.txt', 'r');
+if ($file) {
+    $stmt = $conn->prepare("INSERT INTO szoftver (id, nev, kategoria) VALUES (:id, :nev, :kategoria)");
+    
+    echo "Szoftverek beszúrása...\n";
+
+    $line = fgets($file);
     while(!feof($file)) {
         $line = fgets($file);
         $line = explode("\t", $line);
         if (count($line) === 3) {
             $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':ev', $line[1]);
-            $stmt->bindValue(':het', $line[2]);
+            $stmt->bindValue(':nev', $line[1]);
+            $stmt->bindValue(':kategoria', $line[2]);
             $stmt->execute();
         }
     }
 
     fclose($file);
-    echo "Húzások beszúrva\n";
+    echo "Szoftverek beszúrva\n";
 }
 
-$file = fopen('./huzott.txt', 'r');
+$file = fopen('./telepites.txt', 'r');
 if ($file) {
-    $stmt = $conn->prepare("INSERT INTO huzott (id, huzas_id, szam) VALUES (:id, :huzas_id, :szam)");
+    $stmt = $conn->prepare("INSERT INTO telepites (gepid, szoftverid, verzio, datum) VALUES (:gepid, :szoftverid, :verzio, :datum)");
     
-    echo "Húzott számok beszúrása...\n";
+    echo "Telepítések beszúrása...\n";
 
+    $line = fgets($file);
     while(!feof($file)) {
         $line = fgets($file);
         $line = explode("\t", $line);
-        if (count($line) === 3) {
-            $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':huzas_id', $line[1]);
-            $stmt->bindValue(':szam', $line[2]);
+        if (count($line) === 4) {
+            $stmt->bindValue(':gepid', $line[0]);
+            $stmt->bindValue(':szoftverid', $line[1]);
+            $stmt->bindValue(':verzio', $line[2]);
+            $stmt->bindValue(':datum', $line[3]);
             $stmt->execute();
         }
     }
 
     fclose($file);
-    echo "Húzott számok beszúrva\n";
-}
-
-$file = fopen('./nyeremeny.txt', 'r');
-if ($file) {
-    $stmt = $conn->prepare("INSERT INTO nyeremeny (id, huzas_id, talalat, darab, ertek) VALUES (:id, :huzas_id, :talalat, :darab, :ertek)");
-    
-    echo "Nyeremények beszúrása...\n";
-
-    while(!feof($file)) {
-        $line = fgets($file);
-        $line = explode("\t", $line);
-        if (count($line) === 5) {
-            $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':huzas_id', $line[1]);
-            $stmt->bindValue(':talalat', $line[2]);
-            $stmt->bindValue(':darab', $line[3]);
-            $stmt->bindValue(':ertek', $line[4]);
-            $stmt->execute();
-        }
-    }
-
-    fclose($file);
-    echo "Nyeremények beszúrva\n";
+    echo "Telepítések beszúrva\n";
 }
 
 $conn = null;
