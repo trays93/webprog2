@@ -4,26 +4,6 @@ $menu = [
         'name' => 'Kezdőoldal',
         'ref' => '/beadando',
         'login' => 0
-    ],
-    'previous' => [
-        'name' => 'Előző sorsolások',
-        'ref' => '/beadando/previous',
-        'login' => 0
-    ],
-    'statistics' => [
-        'name' => 'Számstatisztika',
-        'ref' => '/beadando/statistics',
-        'login' => 0
-    ],
-    'arfolyam' => [
-        'name' => 'Árfolyam',
-        'ref' => '/beadando/index/arfolyam',
-        'login' => 0
-    ],
-    'news' => [
-        'name' => 'Hírek',
-        'ref' => '/beadando/news',
-        'login' => 1
     ]
 ];
 ?>

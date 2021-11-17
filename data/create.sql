@@ -12,8 +12,10 @@ CREATE TABLE `user` (
 
 CREATE TABLE `oldalak` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `szulo_id` int(11) NULL,
   `oldal_azonosito` varchar(255) NOT NULL,
+  `szulo_id` int(11) NULL,
+  `lathatosag_logout` int(11) NULL,
+  `lathatosag_login` int(11) NULL,
   PRIMARY KEY(`id`)
 );
 
