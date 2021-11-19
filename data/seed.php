@@ -43,10 +43,10 @@ if ($file) {
         $line = fgets($file);
         $line = explode("\t", $line);
         if (count($line) === 4) {
-            $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':hely', $line[1]);
-            $stmt->bindValue(':tipus', $line[2]);
-            $stmt->bindValue(':ipcim', $line[3]);
+            $stmt->bindValue(':id', trim($line[0]));
+            $stmt->bindValue(':hely', trim($line[1]));
+            $stmt->bindValue(':tipus', trim($line[2]));
+            $stmt->bindValue(':ipcim', trim($line[3]));
             $stmt->execute();
         }
     }
@@ -66,9 +66,9 @@ if ($file) {
         $line = fgets($file);
         $line = explode("\t", $line);
         if (count($line) === 3) {
-            $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':nev', $line[1]);
-            $stmt->bindValue(':kategoria', $line[2]);
+            $stmt->bindValue(':id', trim($line[0]));
+            $stmt->bindValue(':nev', trim($line[1]));
+            $stmt->bindValue(':kategoria', trim($line[2]));
             $stmt->execute();
         }
     }
@@ -88,10 +88,10 @@ if ($file) {
         $line = fgets($file);
         $line = explode("\t", $line);
         if (count($line) === 4) {
-            $stmt->bindValue(':gepid', $line[0]);
-            $stmt->bindValue(':szoftverid', $line[1]);
-            $stmt->bindValue(':verzio', $line[2]);
-            $stmt->bindValue(':datum', $line[3]);
+            $stmt->bindValue(':gepid', trim($line[0]));
+            $stmt->bindValue(':szoftverid', trim($line[1]));
+            $stmt->bindValue(':verzio', trim($line[2]));
+            $stmt->bindValue(':datum', (trim($line[3]) === "") ? null : trim($line[3]));
             $stmt->execute();
         }
     }

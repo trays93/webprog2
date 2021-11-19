@@ -2,18 +2,20 @@ CREATE DATABASE `beadando`;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL COMMENT 'A felhasználó vezetékneve',
+  `lastName` varchar(255) NOT NULL COMMENT 'A felhasználó utóneve',
+  `email` varchar(255) NOT NULL COMMENT 'A felhasználó email címe',
+  `password` varchar(255) NOT NULL COMMENT 'A felhasználó hash-elt jelszava',
+  `role` varchar(255) NOT NULL COMMENT 'A felhasználó szerepköre',
   PRIMARY KEY(`id`)
 );
 
 CREATE TABLE `oldalak` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `szulo_id` int(11) NULL,
-  `oldal_azonosito` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Az oldal elsődleges azonosítója',
+  `szulo_id` int(11) NULL COMMENT 'Az oldalak struktúráját határozza meg',
+  `oldal_azonosito` varchar(255) NOT NULL COMMENT 'Az URL generáláshoz szükséges',
+  `tartalom` text null COMMENT 'A megjelenítendő tartalom',
+  `kattinthato` boolean NOT NULL DEFAULT false COMMENT 'Az oldal megjeleníthető-e',
   PRIMARY KEY(`id`)
 );
 
@@ -43,8 +45,10 @@ CREATE TABLE `telepites` (
 
 ALTER TABLE `telepites`
 ADD CONSTRAINT FK_GEP
-FOREIGN KEY (`gepid`) REFERENCES `gep`(`id`);
+FOREIGN KEY (`gepid`) REFERENCES `gep`(`id`)
+ON DELETE CASCADE;
 
 ALTER TABLE `telepites`
 ADD CONSTRAINT FK_SZOFTVER
-FOREIGN KEY (`szoftverid`) REFERENCES `szoftver`(`id`);
+FOREIGN KEY (`szoftverid`) REFERENCES `szoftver`(`id`)
+ON DELETE CASCADE;
