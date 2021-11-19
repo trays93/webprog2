@@ -31,12 +31,12 @@ $conn = new PDO(
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 echo "Csatlakozás...\n";
-
+/*
 $file = fopen('./gep.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO gep (id, hely, tipus, ipcim) VALUES (:id, :hely, :tipus, :ipcim)");
     
-    echo "Gépek beszúrása...\n";
+    echo "\nGépek beszúrása...";
 
     $line = fgets($file);
     while(!feof($file)) {
@@ -59,7 +59,7 @@ $file = fopen('./szoftver.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO szoftver (id, nev, kategoria) VALUES (:id, :nev, :kategoria)");
     
-    echo "Szoftverek beszúrása...\n";
+    echo "\nSzoftverek beszúrása...";
 
     $line = fgets($file);
     while(!feof($file)) {
@@ -81,7 +81,7 @@ $file = fopen('./telepites.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO telepites (gepid, szoftverid, verzio, datum) VALUES (:gepid, :szoftverid, :verzio, :datum)");
     
-    echo "Telepítések beszúrása...\n";
+    echo "\nTelepítések beszúrása...";
 
     $line = fgets($file);
     while(!feof($file)) {
@@ -98,6 +98,30 @@ if ($file) {
 
     fclose($file);
     echo "Telepítések beszúrva\n";
+}
+*/
+$file = fopen('./oldalak.txt', 'r');
+if ($file) {
+    $stmt = $conn->prepare("INSERT INTO oldalak (id, oldal_azonosito, szulo_id, lathatosag_logout, lathatosag_login) VALUES (:id, :oldal_azonosito, :szulo_id, :lathatosag_logout, :lathatosag_login)");
+    
+    echo "\nMenuelemek beszúrása...";
+
+    $line = fgets($file);
+    while(!feof($file)) {
+        $line = fgets($file);
+        $line = explode("\t", $line);
+        if (count($line) === 5) {
+            $stmt->bindValue(':id', $line[0]);
+            $stmt->bindValue(':oldal_azonosito', $line[1]);
+            $stmt->bindValue(':szulo_id', $line[2]);
+            $stmt->bindValue(':lathatosag_logout', $line[3]);
+            $stmt->bindValue(':lathatosag_login', $line[4]);
+            $stmt->execute();
+        }
+    }
+
+    fclose($file);
+    echo "Menuelemek beszúrva\n";
 }
 
 $conn = null;
