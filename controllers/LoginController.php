@@ -23,7 +23,7 @@ class LoginController
                     $user = new User($result['email'], $result['firstName'], $result['lastName'], $result['id']);
                     $_SESSION['user'] = $user;
 
-                    header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");
+                    header("Location: {$_SERVER['HTTP_ORIGIN']}");
                 } else {
                     return new View('login', 'index', [
                         'error' => 'Hibás email vagy jelszó!',

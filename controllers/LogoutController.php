@@ -7,6 +7,6 @@ class LogoutController
         $_SESSION['user'] = null;
         session_destroy();
         
-        header("Location: {$_SERVER['HTTP_ORIGIN']}/beadando");
+        header("Location: {$_SERVER['HTTP_ORIGIN']}/");
     }
 }
