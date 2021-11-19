@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-4 mt-5">
-        <form action="/beadando/login" method="POST">
+        <form action="/Login" method="POST">
             <?php if (isset($data['error'])) : ?>
             <div class="alert alert-danger" role="alert">
                 <h2>Hiba történt!</h2>

@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-4 mt-5">
-        <form action="/beadando/register" method="POST">
+        <form action="/Register" method="POST">
             <?php if (isset($data['success'])) : ?>
             <div class="alert alert-success" role="alert">
                 <h2><?= $data['success'] ?></h2>
