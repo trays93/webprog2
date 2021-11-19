@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "3d260caf-179c-4db1-a725-a8d4b293df77",
+		"name": "Web Beadandó",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Számítógépek lekérdezése",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://beadando.localhost/ComputersRest/getComputers",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"localhost"
+					],
+					"path": [
+						"ComputersRest",
+						"getComputers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adott számítógép lekérdezése",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://beadando.localhost/ComputersRest/getComputer/1",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"localhost"
+					],
+					"path": [
+						"ComputersRest",
+						"getComputer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Számítógép hozzáadása",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hely\": \"2-es iroda\",\r\n    \"tipus\": \"Dell Inspiron 15 5000\",\r\n    \"ipcim\": \"8.8.8.8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://beadando.localhost/ComputersRest/insertComputer",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"localhost"
+					],
+					"path": [
+						"ComputersRest",
+						"insertComputer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Számítógép módosítása",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hely\": \"1-es iroda\",\r\n    \"tipus\": \"Dell Inspiron 15 5000\",\r\n    \"ipcim\": \"0.0.0.0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://beadando.localhost/ComputersRest/updateComputer/77",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"localhost"
+					],
+					"path": [
+						"ComputersRest",
+						"updateComputer",
+						"77"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Számítógép törlése",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://beadando.localhost/ComputersRest/deleteComputer/77",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"localhost"
+					],
+					"path": [
+						"ComputersRest",
+						"deleteComputer",
+						"77"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
