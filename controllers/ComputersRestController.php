@@ -9,6 +9,8 @@ class ComputersRestController
     private const INSERT_COMPUTER = 'INSERT INTO `gep`(`hely`, `tipus`, `ipcim`) VALUES (:hely, :tipus, :ipcim)';
     private const UPDATE_COMPUTER = 'UPDATE `gep` SET `hely` = :hely,`tipus` = :tipus,`ipcim` = :ipcim WHERE `id` = :id';
     private const DELETE_COMPUTER = 'DELETE FROM `gep` WHERE `id` = :id';
+    private const SELECT_LOCATIONS = 'SELECT `hely` FROM `gep` GROUP BY `hely`';
+    private const SELECT_SOFTWARES = 'SELECT `id`, `nev`, `kategoria` FROM `szoftver`';
 
     public function __construct(PDO $connection)
     {
@@ -133,6 +135,40 @@ class ComputersRestController
         $stmt->execute();
 
         http_response_code(204);
+        return;
+    }
+
+    public function getLocationsAction(Request $request)
+    {
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_LOCATIONS);
+        $stmt->execute();
+        $locations = [];
+
+        foreach ($stmt->fetchAll() as $data) {
+            $locations[] = [
+                'hely'        => $data['hely'],
+            ];
+        }
+
+        echo json_encode($locations);
+        return;
+    }
+
+    public function getSoftwaresAction(Request $request)
+    {
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_SOFTWARES);
+        $stmt->execute();
+        $softwares = [];
+
+        foreach ($stmt->fetchAll() as $data) {
+            $softwares[] = [
+                'id'        => $data['id'],
+                'nev'       => $data['nev'],
+                'kategoria' => $data['kategoria'],
+            ];
+        }
+
+        echo json_encode($softwares);
         return;
     }
 
