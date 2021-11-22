@@ -9,6 +9,11 @@ $menu = [
         'name' => 'Számítógépek',
         'ref' => '/Index/computers',
         'login' => 0
+    ], 
+    'pdf' => [
+        'name' => 'Telepítési adatok pdf-ben',
+        'ref' => '/Pdf',
+        'login' => 0
     ]
 ];
 ?>

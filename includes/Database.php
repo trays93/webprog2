@@ -24,13 +24,15 @@ class Database
     {
         $conn = new PDO(
             // XAMP
-            /*
+            
             'mysql:host=' . SERVER_NAME . ':' . PORT . ';dbname=' . DATABASE_NAME,
-            USER_NAME, PASSWORD); */
+            USER_NAME, PASSWORD); 
 
             // ONLINE
+            /*
             'mysql:host=' . SERVER_NAME . ';dbname=' . DATABASE_NAME,
             USER_NAME, PASSWORD);
+            */
 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

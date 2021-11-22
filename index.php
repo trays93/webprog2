@@ -29,6 +29,13 @@ Router::get('Login', 'index');
 Router::post('Login', 'index');
 Router::get('Logout', 'index');
 Router::post('Logout', 'index');
+Router::get('Pdf','index');
+Router::post('Pdf','index');
+Router::post('Pdf', 'getRooms');
+Router::post('Pdf', 'getIps');
+Router::post('Pdf', 'getSoftwares');
+Router::post('Pdf', 'getAll');
+Router::post('Pdf','create');
 
 // REST kontrollerek
 Router::get('ComputersRest', 'getComputers');

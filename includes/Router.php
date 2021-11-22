@@ -3,11 +3,9 @@
 class Router
 {
     private static array $routes = [];
-
-    private string $controller  = "Index";
-    private string $action      = "index";
-    private int $id             = 0;
-
+    private string $controller = "Index";
+    private string $action = "index";
+    private int $id = 0;
     private Request $request;
 
     public function __construct(Request $request)

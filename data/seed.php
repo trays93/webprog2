@@ -31,7 +31,7 @@ $conn = new PDO(
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 echo "Csatlakozás...\n";
-/*
+
 $file = fopen('./gep.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO gep (id, hely, tipus, ipcim) VALUES (:id, :hely, :tipus, :ipcim)");
@@ -99,7 +99,7 @@ if ($file) {
     fclose($file);
     echo "Telepítések beszúrva\n";
 }
-*/
+/*
 $file = fopen('./oldalak.txt', 'r');
 if ($file) {
     $stmt = $conn->prepare("INSERT INTO oldalak (id, oldal_azonosito, szulo_id, lathatosag_logout, lathatosag_login) VALUES (:id, :oldal_azonosito, :szulo_id, :lathatosag_logout, :lathatosag_login)");
@@ -123,5 +123,5 @@ if ($file) {
     fclose($file);
     echo "Menuelemek beszúrva\n";
 }
-
+*/
 $conn = null;

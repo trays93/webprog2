@@ -18,35 +18,29 @@
     $path = array_values(array_filter(explode('/', $title), function ($value) {
         return trim($value) !== '';
     }));
-    $filename = isset($path[1]) ? $path[1] : '';
+
+    //css autoloader
+    $filename = strtolower(isset($path[1]) ? $path[1] : (isset($path[0]) ? $path[0] : ''));
+    
     ?>
-    <?php if(file_exists('css/'.$filename.'.css')): ?>
-        <link rel="stylesheet" href=<?= SITE_ROOT . 'css/' . $filename . '.css'?> type="text/css">
+    <?php  if(file_exists('styles/'.$filename.'.css')): ?>
+        <link rel="stylesheet" href=<?= "styles/".$filename.".css"?> type="text/css">
     <?php endif; ?>
 
 </head>
-<body class="d-flex flex-column h-100">
+    <body class="d-flex flex-column h-100">
 
-    <?php include_once('header.php'); ?>
+    <?php if(file_exists('views/header.php')):
+    include_once('header.php'); endif?>
     
     <main class="container">
-<?php include_once $viewName; ?>
+        
+        <?php include_once $viewName; ?>
     </main>
 
+    <?php if(file_exists('views/footer.php')):
+    include_once('footer.php'); endif?>
     
-
-    <footer class="mt-auto py-3 my-4">
-        <div class="container">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li>
-                    <a href="/" class="nav-link px-2 text-secondary">
-                        Kezdőoldal
-                    </a>
-                </li>
-            </ul>
-            <p class="text-center text-muted">&copy; <?= date('Y') ?> Készítették: Lovas Bálint és Fekete Zoltán</p>
-        </div>
-    </footer>
 
     <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -56,8 +50,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <?php if(file_exists('scripts/'.$filename.'.js')): ?>
-        <script type="text/javascript" src=<?= SITE_ROOT . '/scripts/' . $filename . '.js'?>></script>
+        <script type="text/javascript" src=<?= 'scripts/' . $filename . '.js'?>></script>
     <?php endif; ?>
     
 </body>
