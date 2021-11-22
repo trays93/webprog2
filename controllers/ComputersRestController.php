@@ -3,12 +3,14 @@
 class ComputersRestController
 {
     private PDO $connection;
-    private static $selectComputers = 'SELECT `id`, `hely`, `tipus`, `ipcim` FROM `gep`';
-    private static $selectComputer = 'SELECT `id`, `hely`, `tipus`, `ipcim` FROM `gep` WHERE `id` = :id';
-    private static $selectInstallationsWithSoftware = 'SELECT `telepites`.`id`, `gepid`, `szoftverid`, `verzio`, `datum`, `nev`, `kategoria` FROM `telepites` LEFT JOIN `szoftver` ON `telepites`.`szoftverid` = `szoftver`.`id` WHERE `gepid` = :id';
-    private static $insertComputer = 'INSERT INTO `gep`(`hely`, `tipus`, `ipcim`) VALUES (:hely, :tipus, :ipcim)';
-    private static $updateComputer = 'UPDATE `gep` SET `hely` = :hely,`tipus` = :tipus,`ipcim` = :ipcim WHERE `id` = :id';
-    private static $deleteComputer = 'DELETE FROM `gep` WHERE `id` = :id';
+    private const SELECT_COMPUTERS = 'SELECT `id`, `hely`, `tipus`, `ipcim` FROM `gep`';
+    private const SELECT_COMPUTER = 'SELECT `id`, `hely`, `tipus`, `ipcim` FROM `gep` WHERE `id` = :id';
+    private const SELECT_INSTALLATIONS_WITH_SOFTWARE = 'SELECT `telepites`.`id`, `gepid`, `szoftverid`, `verzio`, `datum`, `nev`, `kategoria` FROM `telepites` LEFT JOIN `szoftver` ON `telepites`.`szoftverid` = `szoftver`.`id` WHERE `gepid` = :id';
+    private const INSERT_COMPUTER = 'INSERT INTO `gep`(`hely`, `tipus`, `ipcim`) VALUES (:hely, :tipus, :ipcim)';
+    private const UPDATE_COMPUTER = 'UPDATE `gep` SET `hely` = :hely,`tipus` = :tipus,`ipcim` = :ipcim WHERE `id` = :id';
+    private const DELETE_COMPUTER = 'DELETE FROM `gep` WHERE `id` = :id';
+    private const SELECT_LOCATIONS = 'SELECT `hely` FROM `gep` GROUP BY `hely`';
+    private const SELECT_SOFTWARES = 'SELECT `id`, `nev`, `kategoria` FROM `szoftver`';
 
     public function __construct(PDO $connection)
     {
@@ -17,7 +19,7 @@ class ComputersRestController
 
     public function getComputersAction(Request $request)
     {
-        $stmt = $this->connection->prepare(ComputersRestController::$selectComputers);
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_COMPUTERS);
         $stmt->execute();
         $gepek = [];
 
@@ -32,7 +34,7 @@ class ComputersRestController
 
     public function getComputerAction(Request $request, int $id)
     {
-        $stmt = $this->connection->prepare(ComputersRestController::$selectComputer);
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_COMPUTER);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         $gep = $this->getComputerById($id);
@@ -46,7 +48,7 @@ class ComputersRestController
             return;
         }
 
-        $stmt = $this->connection->prepare(ComputersRestController::$selectInstallationsWithSoftware);
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_INSTALLATIONS_WITH_SOFTWARE);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
@@ -75,7 +77,7 @@ class ComputersRestController
             return;
         }
 
-        $stmt = $this->connection->prepare(ComputersRestController::$insertComputer);
+        $stmt = $this->connection->prepare(ComputersRestController::INSERT_COMPUTER);
         $stmt->bindValue(':hely', $hely);
         $stmt->bindValue(':tipus', $tipus);
         $stmt->bindValue(':ipcim', $ipcim);
@@ -106,7 +108,7 @@ class ComputersRestController
             ]);
         }
 
-        $stmt = $this->connection->prepare(ComputersRestController::$updateComputer);
+        $stmt = $this->connection->prepare(ComputersRestController::UPDATE_COMPUTER);
         $stmt->bindValue(':id', $id);
         $stmt->bindValue(':hely', $hely);
         $stmt->bindValue(':tipus', $tipus);
@@ -128,7 +130,7 @@ class ComputersRestController
             return;
         }
 
-        $stmt = $this->connection->prepare(ComputersRestController::$deleteComputer);
+        $stmt = $this->connection->prepare(ComputersRestController::DELETE_COMPUTER);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
 
@@ -136,9 +138,43 @@ class ComputersRestController
         return;
     }
 
+    public function getLocationsAction(Request $request)
+    {
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_LOCATIONS);
+        $stmt->execute();
+        $locations = [];
+
+        foreach ($stmt->fetchAll() as $data) {
+            $locations[] = [
+                'hely'        => $data['hely'],
+            ];
+        }
+
+        echo json_encode($locations);
+        return;
+    }
+
+    public function getSoftwaresAction(Request $request)
+    {
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_SOFTWARES);
+        $stmt->execute();
+        $softwares = [];
+
+        foreach ($stmt->fetchAll() as $data) {
+            $softwares[] = [
+                'id'        => $data['id'],
+                'nev'       => $data['nev'],
+                'kategoria' => $data['kategoria'],
+            ];
+        }
+
+        echo json_encode($softwares);
+        return;
+    }
+
     private function getComputerById($id): ?Gep
     {
-        $stmt = $this->connection->prepare(ComputersRestController::$selectComputer);
+        $stmt = $this->connection->prepare(ComputersRestController::SELECT_COMPUTER);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         $gep = null;
