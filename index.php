@@ -14,6 +14,8 @@ require_once(SERVER_ROOT . 'includes/Request.php');
 require_once(SERVER_ROOT . 'includes/Autoloader.php');
 require_once(SERVER_ROOT . 'includes/View.php');
 require_once(SERVER_ROOT . 'includes/Database.php');
+require_once(SERVER_ROOT . 'includes/Menu.php');
+require_once(SERVER_ROOT . 'includes/MenuController.php');
 
 Autoloader::loadControllers();
 Autoloader::loadModels();

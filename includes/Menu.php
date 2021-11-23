@@ -4,26 +4,43 @@ class Menu{
 
     private int $id;
     private string $comment;
-    private int $parent_id;
-    private string $page_path;
+    private int $parentId;
+    private string $pagePath;
     private bool $click;
 
-    public function __construct(
-        string $hely = "", string $tipus = "",
-        string $ipcim = "", int $id = 0)
+    public function __construct(int $id, string $comment, int $parentId, 
+                                string $pagePath, bool $click,)
     {
         $this->id           = $id;
-        $this->hely         = $hely;
-        $this->tipus        = $tipus;
-        $this->ipcim        = $ipcim;
-        $this->telepitesek  = [];
+        $this->comment      = $comment;
+        $this->parentId    = $parentId;
+        $this->pagePath    = $pagePath;
+        $this->click        = $click;
     }
 
-`id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Az oldal elsődleges azonosítója',
-  `tartalom` text null COMMENT 'A megjelenítendő tartalom',
-  `szulo_id` int(11) NULL COMMENT 'Az oldalak struktúráját határozza meg',
-  `oldal_azonosito` varchar(255) NOT NULL COMMENT 'Az URL generáláshoz szükséges',
-  `kattinthato` boolean NOT NULL DEFAULT false COMMENT 'Az oldal megjeleníthető-e',
-  PRIMARY KEY(`id`)
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
+    public function getParentId(): int
+    {
+        return $this->parentId;
+    }
+
+    public function getPagePath(): string
+    {
+        return $this->pagePath;
+    }
+
+    public function getClick(): bool
+    {
+        return $this->click;
+    }
 }

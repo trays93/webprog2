@@ -99,10 +99,10 @@ if ($file) {
     fclose($file);
     echo "Telepítések beszúrva\n";
 }
-/*
+
 $file = fopen('./oldalak.txt', 'r');
 if ($file) {
-    $stmt = $conn->prepare("INSERT INTO oldalak (id, oldal_azonosito, szulo_id, lathatosag_logout, lathatosag_login) VALUES (:id, :oldal_azonosito, :szulo_id, :lathatosag_logout, :lathatosag_login)");
+    $stmt = $conn->prepare("INSERT INTO oldalak (id, tartalom, szulo_id, oldal_azonosito, kattinthato) VALUES (:id, :tartalom, :szulo_id, :oldal_azonosito, :kattinthato)");
     
     echo "\nMenuelemek beszúrása...";
 
@@ -112,10 +112,10 @@ if ($file) {
         $line = explode("\t", $line);
         if (count($line) === 5) {
             $stmt->bindValue(':id', $line[0]);
-            $stmt->bindValue(':oldal_azonosito', $line[1]);
+            $stmt->bindValue(':tartalom', $line[1]);
             $stmt->bindValue(':szulo_id', $line[2]);
-            $stmt->bindValue(':lathatosag_logout', $line[3]);
-            $stmt->bindValue(':lathatosag_login', $line[4]);
+            $stmt->bindValue(':oldal_azonosito', $line[3]);
+            $stmt->bindValue(':kattinthato', $line[4]);
             $stmt->execute();
         }
     }
@@ -123,5 +123,5 @@ if ($file) {
     fclose($file);
     echo "Menuelemek beszúrva\n";
 }
-*/
+
 $conn = null;

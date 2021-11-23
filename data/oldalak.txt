@@ -1,14 +1,9 @@
-id  nev szulo_id    lathatosag_logout   lathatosag_login
-1	Főoldal	0	1	1
-2	Hírek	0	1	1
-3	Rólunk	0	1	1
-4	Karrier	0	0	1
-5	Szoftverek	0	0	1
-6	Bejelentkezés	0	1	0
-7	Regisztráció	0	1	0
-8	Kijelentkezés	0	0	1
-9	Legfőbb Hírek	2	1	1
-10	Pályázatok	2	0	1
-11	Újdonságok	2	1	1
-12	Bemutatkozás	3	1	1
-13	Elérhetőségek	3	1	1
+id  tartalom szulo_id oldal_azonosito kattinthato
+1	Főoldal	0	/Index	1
+2	Hírek	0	/Index/breakingNews	1
+3	Információk	0		0
+4	Elérhetőségek	0	/Index/contact	1
+5	Számítógépeink	3	/Index/computers	1
+6	Pdf	3	/Pdf	1
+7	Újdonságok	3	/Index/news	1
+8	Bemutatkozás	3	/Index/us	1

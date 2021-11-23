@@ -121,7 +121,8 @@ class PdfController
     }
 
     private function toPdfAction(array $data) : string {
-        $result = '<table border="1" cellspacing="2" celpadding="20" style="width:80%">
+        $result = '<h1>A kiválasztott adatok részletei:<br></h1>
+        <table border="1" cellspacing="2" celpadding="20" style="width:80%">
             <tr>
                 <td>Hely</td>
                 <td>'.$data['hely'].'</td>

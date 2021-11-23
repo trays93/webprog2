@@ -12,9 +12,9 @@ CREATE TABLE `user` (
 
 CREATE TABLE `oldalak` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Az oldal elsődleges azonosítója',
+  `tartalom` text null COMMENT 'A megjelenítendő tartalom',
   `szulo_id` int(11) NULL COMMENT 'Az oldalak struktúráját határozza meg',
   `oldal_azonosito` varchar(255) NOT NULL COMMENT 'Az URL generáláshoz szükséges',
-  `tartalom` text null COMMENT 'A megjelenítendő tartalom',
   `kattinthato` boolean NOT NULL DEFAULT false COMMENT 'Az oldal megjeleníthető-e',
   PRIMARY KEY(`id`)
 );

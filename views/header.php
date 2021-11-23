@@ -1,54 +1,75 @@
-<?php 
-$menu = [
-    'home' => [
-        'name' => 'Kezdőoldal',
-        'ref' => '/Index',
-        'login' => 0
-    ],
-    'news' => [
-        'name' => 'Számítógépek',
-        'ref' => '/Index/computers',
-        'login' => 0
-    ], 
-    'pdf' => [
-        'name' => 'Telepítési adatok pdf-ben',
-        'ref' => '/Pdf',
-        'login' => 0
-    ]
-];
-?>
+<style>
 
-    <header class="p-3 bg-dark text-white">
+    .text-end {
+        margin: 10px 0px;
+        min-width: 30%;
+    }
+
+    a {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    .btn.btn-outline-light.me-2 {
+        margin: 4px;
+    }
+
+    .btn.btn-warning {
+        margin: 4px;
+    }
+
+</style>
+
+<?php 
+$controll = new MenuController(Database::getConnection());
+$menu = $controll->getItem(0);
+
+
+?>
+<header class="p-3 bg-dark text-white">
         <div class="container">
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark" >
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation" style="margin: 10px;">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav mr-auto btn-group">
-                        <?php foreach ($menu as $m) { 
-                            if($m['login'] == 0) {?>
-                                <li class="nav-item">
-                                    <b><a class="nav-link" href="<?= $m['ref'] ?>">
-                                    <?= $m['name'] ?></a></b>
-                                </li> <?php }
-                            elseif ($m['login'] == 1 && isset($_SESSION['user'])) { ?>
-                                <li class="nav-item">
-                                    <b><a class="nav-link" href="<?= $m['ref'] ?>">
-                                    <?= $m['name'] ?></a></b>
-                                </li>
-                        <?php } } ?>
-                    </ul>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                            <?php 
+                            foreach($menu as $m) {
+                                if(count($controll->getItem($m->getId())) > 0) {?>
+                                    <li class="nav-item dropdown" id="myDropdown">
+                                        <a class="nav-link dropdown-toggle" <?php if($m->getClick()) {?>href="<?=$m->getPagePath()?>" <?php } ?> data-bs-toggle="dropdown">
+                                            <?=$m->getComment()?>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                        <?php $dropdownmenu = $controll->getItem($m->getId());
+                                        foreach($dropdownmenu as $d) { ?>
+                                            <li> <a class="dropdown-item" <?php if($d->getClick()) {?>href="<?=$d->getPagePath()?>" <?php } ?>>
+                                                <?=$d->getComment()?>
+                                            </a></li>
+                                        <?php } ?>
+                                        </ul>
+                                    </li>  
+                      <?php      } else { ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" <?php if($m->getClick()) {?>href="<?=$m->getPagePath()?>" <?php } ?>>
+                                            <?=$m->getComment()?>
+                                    </a></li>
+                        <?php   }
+                            }
+                            ?>
+                    </div>
                 </div>
                 <div class="text-end">
                     <?php if (isset($_SESSION['user'])): ?>
                         Bejelentkezett: <?= $_SESSION['user']->print() ?>
-                        <a href="/Logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
+                        <a id="log" href="/Logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
                         <?php else: ?>
-                        <a href="/Login" class="btn btn-outline-light me-2">Bejelentkezés</a>
-                        <a href="/Register" class="btn btn-warning">Regisztráció</a>
+                        <a id="log" href="/Login" class="btn btn-outline-light me-2">Bejelentkezés</a>
+                        <a id="log" href="/Register" class="btn btn-warning">Regisztráció</a>
                         <?php endif; ?>
                 </div>
             </nav>
         </div>
-    </header>
+</header>
+
