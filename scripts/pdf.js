@@ -86,6 +86,5 @@ $(document).ready(function() {
    $("#roomSelect").change(ips);
    $("#ipSelect").change(softwares);
    $("#softwareSelect").change(all);
-   
    }
 );
