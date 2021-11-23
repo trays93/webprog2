@@ -24,7 +24,7 @@
     
     ?>
     <?php  if(file_exists('styles/'.$filename.'.css')): ?>
-        <link rel="stylesheet" href=<?= "styles/".$filename.".css"?> type="text/css">
+        <link rel="stylesheet" href=<?= SITE_ROOT . '/styles/' . $filename . '.css' ?> type="text/css">
     <?php endif; ?>
 
 </head>
@@ -52,7 +52,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <?php if(file_exists('scripts/'.$filename.'.js')): ?>
-        <script type="text/javascript" src=<?= 'scripts/' . $filename . '.js'?>></script>
+        <script type="text/javascript" src=<?= SITE_ROOT . '/scripts/' . $filename . '.js' ?>></script>
     <?php endif; ?>
     
 </body>
