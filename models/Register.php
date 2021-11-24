@@ -22,6 +22,8 @@ class Register
      */
     private $password;
 
+    private int $role = 2;
+
     public function __construct(string $email, string $firstName, string $lastName, string $password)
     {
         $this->setEmail($email)
@@ -71,6 +73,17 @@ class Register
     public function setPassword(string $password): self
     {
         $this->password = sha1($password);
+        return $this;
+    }
+
+    public function getRole(): int
+    {
+        return $this->role;
+    }
+
+    public function setRole(int $role): self
+    {
+        $this->role = $role;
         return $this;
     }
 }

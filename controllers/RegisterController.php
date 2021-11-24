@@ -19,15 +19,16 @@ class RegisterController
                     'errors' => $validationErrors,
                 ]);
             } else {
-                $register = new Register($data['email'], $data['firstname'], $data['lastname'], $data['password']);
+                $register = new Register($data['email'], $data['firstname'], $data['lastname'], $data['password'], 2);
 
                 try {
                     $conn = Database::getConnection();
-                    $stmt = $conn->prepare("INSERT INTO user (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
+                    $stmt = $conn->prepare("INSERT INTO user (firstName, lastName, email, password, role) VALUES (:firstName, :lastName, :email, :password, :role)");
                     $stmt->bindValue(':firstName', $register->getFirstName());
                     $stmt->bindValue(':lastName', $register->getLastName());
                     $stmt->bindValue(':email', $register->getEmail());
                     $stmt->bindValue(':password', $register->getPassword());
+                    $stmt->bindValue(':role', $register->getRole());
                     $stmt->execute();
                     
                 } catch(PDOException $e) {

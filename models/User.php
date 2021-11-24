@@ -22,12 +22,15 @@ class User
      */
     private $user_id;
 
-    public function __construct(string $email, string $firstName, string $lastName, int $user_id)
+    private int $role;
+
+    public function __construct(string $email, string $firstName, string $lastName, int $user_id, int $role)
     {
         $this->setEmail($email)
             ->setFirstName($firstName)
             ->setLastName($lastName)
-            ->setUserId($user_id);
+            ->setUserId($user_id)
+            ->setRole($role);
     }
 
     public function getEmail(): string
@@ -77,5 +80,16 @@ class User
     public function print(): string
     {
         return $this->getLastName() . ' ' . $this->getFirstName() . ' (' . $this->getEmail() . ')';
+    }
+
+    public function getRole(): int
+    {
+        return $this->role;
+    }
+
+    public function setRole(int $role): self
+    {
+        $this->role = $role;
+        return $this;
     }
 }

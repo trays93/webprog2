@@ -12,4 +12,9 @@ class IndexController
         return new View('index', 'computers', []);
     }
 
+    public function chartAction()
+    {
+        return new View('index', 'chart');
+    }
+
 }

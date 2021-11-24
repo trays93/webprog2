@@ -1,0 +1,2 @@
+firstName lastName email password role
+Admin	István	istvan@admin.hu	admin	3

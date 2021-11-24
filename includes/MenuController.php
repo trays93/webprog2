@@ -2,7 +2,7 @@
 class MenuController
 {
     private PDO $connection;
-    private $selectItem = 'SELECT id, tartalom, szulo_id, oldal_azonosito, kattinthato FROM oldalak WHERE szulo_id = :id';
+    private $selectItem = 'SELECT id, tartalom, szulo_id, oldal_azonosito, kattinthato, jogosultsag FROM oldalak WHERE szulo_id = :id';
     
 
     public function __construct(PDO $connection)
@@ -19,7 +19,7 @@ class MenuController
             
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $new = new Menu($row["id"], $row["tartalom"], $row["szulo_id"], 
-                                    $row["oldal_azonosito"], $row["kattinthato"]);
+                                    $row["oldal_azonosito"], $row["kattinthato"], $row['jogosultsag']);
                     $result[] = $new;
                 }
 

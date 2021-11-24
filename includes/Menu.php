@@ -7,15 +7,17 @@ class Menu{
     private int $parentId;
     private string $pagePath;
     private bool $click;
+    private int $permission;
 
     public function __construct(int $id, string $comment, int $parentId, 
-                                string $pagePath, bool $click,)
+                                string $pagePath, bool $click, int $permission)
     {
         $this->id           = $id;
         $this->comment      = $comment;
-        $this->parentId    = $parentId;
-        $this->pagePath    = $pagePath;
+        $this->parentId     = $parentId;
+        $this->pagePath     = $pagePath;
         $this->click        = $click;
+        $this->permission   = $permission;
     }
 
 
@@ -42,5 +44,10 @@ class Menu{
     public function getClick(): bool
     {
         return $this->click;
+    }
+
+    public function getPermission(): int
+    {
+        return $this->permission;
     }
 }

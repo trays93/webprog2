@@ -102,7 +102,7 @@ if ($file) {
 
 $file = fopen('./oldalak.txt', 'r');
 if ($file) {
-    $stmt = $conn->prepare("INSERT INTO oldalak (id, tartalom, szulo_id, oldal_azonosito, kattinthato) VALUES (:id, :tartalom, :szulo_id, :oldal_azonosito, :kattinthato)");
+    $stmt = $conn->prepare("INSERT INTO oldalak (id, tartalom, szulo_id, oldal_azonosito, kattinthato, jogosultsag) VALUES (:id, :tartalom, :szulo_id, :oldal_azonosito, :kattinthato, :jogosultsag)");
     
     echo "\nMenuelemek beszúrása...";
 
@@ -110,18 +110,43 @@ if ($file) {
     while(!feof($file)) {
         $line = fgets($file);
         $line = explode("\t", $line);
-        if (count($line) === 5) {
+        if (count($line) === 6) {
             $stmt->bindValue(':id', $line[0]);
             $stmt->bindValue(':tartalom', $line[1]);
             $stmt->bindValue(':szulo_id', $line[2]);
             $stmt->bindValue(':oldal_azonosito', $line[3]);
             $stmt->bindValue(':kattinthato', $line[4]);
+            $stmt->bindValue(':jogosultsag', $line[5]);
             $stmt->execute();
         }
     }
 
     fclose($file);
     echo "Menuelemek beszúrva\n";
+}
+
+$file = fopen('./user.txt', 'r');
+if ($file) {
+    $stmt = $conn->prepare("INSERT INTO user (firstName, lastName, email, password, role) VALUES (:firstName, :lastName, :email, :password, :role)");
+    
+    echo "\nAdminok beszúrása...";
+
+    $line = fgets($file);
+    while(!feof($file)) {
+        $line = fgets($file);
+        $line = explode("\t", $line);
+        if (count($line) === 5) {
+            $stmt->bindValue(':firstName', trim($line[0]));
+            $stmt->bindValue(':lastName', trim($line[1]));
+            $stmt->bindValue(':email', trim($line[2]));
+            $stmt->bindValue(':password', trim(sha1($line[3])));
+            $stmt->bindValue(':role', trim($line[4]));
+            $stmt->execute();
+        }
+    }
+
+    fclose($file);
+    echo "Adminok beszúrva\n";
 }
 
 $conn = null;
