@@ -65,15 +65,15 @@ $menu = $controll->getItem(0);
                             }
                             ?>
                     </div>
-                </div>
-                <div class="text-end">
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <?= ($_SESSION['user']->getRole() == 3 ? 'Admin: ' : 'Bejelentkezett').$_SESSION['user']->print() ?>
-                        <a id="log" href="/Logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
-                        <?= $_SESSION['user']->getRole() == 3 ? '<a id="log" href="/Register" class="btn btn-warning">Regisztráció</a>' : ''?>
-                        <?php else: ?>
-                        <a id="log" href="/Login" class="btn btn-outline-light me-2">Bejelentkezés</a>
-                        <?php endif; ?>
+                    <div class="text-end">
+                            <?php if (isset($_SESSION['user'])): ?>
+                                <?= ($_SESSION['user']->getRole() == 3 ? 'Admin: ' : 'Bejelentkezett').$_SESSION['user']->print() ?>
+                                <a id="log" href="/Logout" class="btn btn-outline-light me-2">Kijelentkezés</a>
+                                <?= $_SESSION['user']->getRole() == 3 ? '<a id="log" href="/Register" class="btn btn-warning">Regisztráció</a>' : ''?>
+                                <?php else: ?>
+                                <a id="log" href="/Login" class="btn btn-outline-light me-2">Bejelentkezés</a>
+                                <?php endif; ?>
+                    </div>
                 </div>
             </nav>
         </div>

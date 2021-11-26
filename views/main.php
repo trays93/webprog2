@@ -21,7 +21,8 @@
 
     //css autoloader
     $filename = strtolower(isset($path[1]) ? $path[1] : (isset($path[0]) ? $path[0] : ''));
-    
+    $filename = $filename == '' && $_SERVER['QUERY_STRING'] == '' ? 'home' : $filename;
+
     ?>
     <?php  if(file_exists('styles/'.$filename.'.css')): ?>
         <link rel="stylesheet" href=<?= SITE_ROOT . '/styles/' . $filename . '.css' ?> type="text/css">
@@ -49,7 +50,6 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
 

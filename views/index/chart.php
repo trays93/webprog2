@@ -18,11 +18,10 @@
    var colors = <?php echo json_encode($colors); ?>;
 </script>
 
-<div class="container">
     <div class="col-12"><canvas id="myChart"></canvas></div>
     
     <div class="col-12">
-        <div id="Title" class="col-12 d-flex justify-content-center"><h3>A legnépszerűbb szoftverek</h3></div>
+        <div id="title" class="col-12 d-flex justify-content-center"><h3>A legnépszerűbb szoftverek</h3></div>
         <div class="col-12" id="tableHigh">
             <table class="table table-striped">
                 <thead>
@@ -46,7 +45,7 @@
     </div>
 
     <div class="col-12">
-        <div id="Title" class="col-12 d-flex justify-content-center"><h3>A legnépszerűtlenebb szoftverek</h3></div>
+        <div id="title" class="col-12 d-flex justify-content-center"><h3>A legnépszerűtlenebb szoftverek</h3></div>
         <div class="col-12" id="tableHigh">
             <table class="table table-striped">
                 <thead>
@@ -69,5 +68,4 @@
             </table>
         </div>
     </div>
-</div>
 <?php } ?>

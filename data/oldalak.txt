@@ -1,5 +1,5 @@
 id  tartalom szulo_id oldal_azonosito kattinthato	jogosultsag
-1	Főoldal	0	/Index	1	1
+1	Főoldal	0	/	1	1
 2	Hírek	0	/Index/breakingNews	1	1
 3	Információk	0		0	2
 4	Elérhetőségek	0	/Index/contact	1	1
