@@ -1,6 +1,6 @@
 CREATE OR REPLACE DATABASE `beadando`;
-
 USE `beadando`;
+
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -1,14 +1,12 @@
 <?php
-
 define('SERVER_ROOT', "{$_SERVER['DOCUMENT_ROOT']}/");
 
 //XAMP
 define('SITE_ROOT', 'http://beadando.io'); 
 
 // ONLINE
-// define('SITE_ROOT', 'http://hatoslotto.nhely.hu');
+//define('SITE_ROOT', 'http://bazol.nhely.hu');
 
-// require_once(SERVER_ROOT . 'controllers/Router.php');
 require_once(SERVER_ROOT . 'includes/Router.php');
 require_once(SERVER_ROOT . 'includes/Request.php');
 require_once(SERVER_ROOT . 'includes/Autoloader.php');
@@ -46,7 +44,6 @@ Router::get('ComputersRest', 'getComputer');
 Router::post('ComputersRest', 'insertComputer');
 Router::put('ComputersRest', 'updateComputer');
 Router::delete('ComputersRest', 'deleteComputer');
-
 
 $request = new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'], $_GET, $_POST);
 $router = new Router($request);

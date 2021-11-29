@@ -31,7 +31,7 @@
 </head>
     <body class="d-flex flex-column h-100">
 
-    <?php if(file_exists('views/header.php')):
+    <?php if(file_exists('views/header.php') && $filename != "create"):
     include_once('header.php'); endif?>
     
     <main class="container">
@@ -39,7 +39,7 @@
         <?php include_once $viewName; ?>
     </main>
 
-    <?php if(file_exists('views/footer.php')):
+    <?php if(file_exists('views/footer.php') && $filename != "create"):
     include_once('footer.php'); endif?>
     
 
