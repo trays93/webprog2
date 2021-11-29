@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3d260caf-179c-4db1-a725-a8d4b293df77",
+		"_postman_id": "921e0b29-3d00-4283-8d12-e39f90daaeaf",
 		"name": "Web Beadandó",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -23,11 +23,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://beadando.localhost/ComputersRest/getComputers",
+					"raw": "http://beadando.io/ComputersRest/getComputers",
 					"protocol": "http",
 					"host": [
 						"beadando",
-						"localhost"
+						"io"
 					],
 					"path": [
 						"ComputersRest",
@@ -43,11 +43,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://beadando.localhost/ComputersRest/getComputer/1",
+					"raw": "http://beadando.io/ComputersRest/getComputer/1",
 					"protocol": "http",
 					"host": [
 						"beadando",
-						"localhost"
+						"io"
 					],
 					"path": [
 						"ComputersRest",
@@ -73,11 +73,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://beadando.localhost/ComputersRest/insertComputer",
+					"raw": "http://beadando.io/ComputersRest/insertComputer",
 					"protocol": "http",
 					"host": [
 						"beadando",
-						"localhost"
+						"io"
 					],
 					"path": [
 						"ComputersRest",
@@ -102,11 +102,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://beadando.localhost/ComputersRest/updateComputer/77",
+					"raw": "http://beadando.io/ComputersRest/updateComputer/77",
 					"protocol": "http",
 					"host": [
 						"beadando",
-						"localhost"
+						"io"
 					],
 					"path": [
 						"ComputersRest",
@@ -133,6 +133,212 @@
 						"ComputersRest",
 						"deleteComputer",
 						"77"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Helyszínek lekérdezése",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://beadando.io/ComputersRest/getLocations",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"io"
+					],
+					"path": [
+						"ComputersRest",
+						"getLocations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Szoftverek lekérdezése",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://beadando.io/ComputersRest/getSoftwares",
+					"protocol": "http",
+					"host": [
+						"beadando",
+						"io"
+					],
+					"path": [
+						"ComputersRest",
+						"getSoftwares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy API Felhasználók lekérdezése",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app-id",
+						"value": "61a510ed2ce5cb82f59fd850",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dummyapi.io/data/v1/user",
+					"protocol": "https",
+					"host": [
+						"dummyapi",
+						"io"
+					],
+					"path": [
+						"data",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy API Felhasználó lekérdezése",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app-id",
+						"value": "61a510ed2ce5cb82f59fd850",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dummyapi.io/data/v1/user/60d0fe4f5311236168a109cd",
+					"protocol": "https",
+					"host": [
+						"dummyapi",
+						"io"
+					],
+					"path": [
+						"data",
+						"v1",
+						"user",
+						"60d0fe4f5311236168a109cd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy API Felhasználó létrehozása",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "app-id",
+						"value": "61a510ed2ce5cb82f59fd850",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Elek\",\r\n    \"lastName\": \"Teszt\",\r\n    \"email\": \"teszt@elek.io\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyapi.io/data/v1/user/create",
+					"protocol": "https",
+					"host": [
+						"dummyapi",
+						"io"
+					],
+					"path": [
+						"data",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy API Felhasználó módosítása",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "app-id",
+						"value": "61a510ed2ce5cb82f59fd850",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Teszt\",\r\n    \"lastName\": \"Elek\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyapi.io/data/v1/user/61a5122937f45031e03aaf05",
+					"protocol": "https",
+					"host": [
+						"dummyapi",
+						"io"
+					],
+					"path": [
+						"data",
+						"v1",
+						"user",
+						"61a5122937f45031e03aaf05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dummy API Felhasználó törlése",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "app-id",
+						"value": "61a510ed2ce5cb82f59fd850",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyapi.io/data/v1/user/61a5122937f45031e03aaf05",
+					"protocol": "https",
+					"host": [
+						"dummyapi",
+						"io"
+					],
+					"path": [
+						"data",
+						"v1",
+						"user",
+						"61a5122937f45031e03aaf05"
 					]
 				}
 			},
