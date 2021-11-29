@@ -43,4 +43,18 @@ class IndexController
         return new View('index', 'dummy');
     }
 
+    public function breakingNewsAction()
+    {
+        return new View('index', 'underConstruction');
+    }
+
+    public function newsAction()
+    {
+        return new View('index', 'underConstruction');
+    }
+
+    public function contactAction()
+    {
+        return new View('index', 'underConstruction');
+    }
 }

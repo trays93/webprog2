@@ -37,6 +37,10 @@ Router::post('Pdf', 'getSoftwares');
 Router::post('Pdf', 'getAll');
 Router::post('Pdf','create');
 Router::get('Index', 'chart');
+Router::get('Index', 'dummy');
+Router::get('Index', 'breakingNews');
+Router::get('Index', 'news');
+Router::get('Index', 'contact');
 
 // REST kontrollerek
 Router::get('ComputersRest', 'getComputers');
