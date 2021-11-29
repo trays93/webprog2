@@ -13,8 +13,8 @@ define('PASSWORD', '');
 // ONLINE
 /*
 define('SERVER_NAME', 'localhost');
-define('DATABASE_NAME', 'fekez');
-define('USER_NAME', 'fekez');
+define('DATABASE_NAME', 'fekeztarhely');
+define('USER_NAME', 'fekeztarhely');
 define('PASSWORD', 'JC!Pia!GRsfX4Y8');
 */
 
@@ -27,6 +27,7 @@ class Database
             
             'mysql:host=' . SERVER_NAME . ':' . PORT . ';dbname=' . DATABASE_NAME,
             USER_NAME, PASSWORD); 
+            
 
             // ONLINE
             /*
