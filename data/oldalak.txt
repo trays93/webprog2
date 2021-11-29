@@ -7,3 +7,4 @@ id  tartalom szulo_id oldal_azonosito kattinthato	jogosultsag
 6	Pdf	3	/Pdf	1	2
 7	Újdonságok	3	/Index/news	1	2
 8	Grafikon	3	/Index/chart	1	2
+9	Dummy API	3	/Index/dummy	1	2

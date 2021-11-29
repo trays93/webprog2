@@ -38,4 +38,9 @@ class IndexController
         }
     }
 
+    public function dummyAction()
+    {
+        return new View('index', 'dummy');
+    }
+
 }
