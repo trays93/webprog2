@@ -20,7 +20,7 @@
 
     foreach($content as $c) { ?>
         <div id="content" class="col-12">
-            <h6><?= $content[$counter] ?></h6>
+            <h6><?= $c ?></h6>
         </div>
         <?php if(file_exists(SERVER_ROOT.'images/'.$filename.'/'.$counter.'.jpg')) { ?>
             <div id="img" class="col-12 d-flex justify-content-center">

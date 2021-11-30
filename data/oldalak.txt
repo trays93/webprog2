@@ -3,7 +3,7 @@ id  tartalom szulo_id oldal_azonosito kattinthato	jogosultsag
 2	Hírek	0	/Index/breakingNews	1	1
 3	Információk	0		0	2
 4	Elérhetőségek	0	/Index/contact	1	1
-5	Számítógépeink	3	/Index/computers	1	3
+5	Számítógépeink	3	/Index/computers	1	2
 6	Pdf	3	/Pdf	1	2
 7	Újdonságok	3	/Index/news	1	2
 8	Grafikon	3	/Index/chart	1	2

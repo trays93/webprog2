@@ -21,7 +21,7 @@
 
     //css autoloader
     $filename = strtolower(isset($path[1]) ? $path[1] : (isset($path[0]) ? $path[0] : ''));
-    $filename = $filename == '' && $_SERVER['QUERY_STRING'] == '' ? 'home' : $filename;
+    $filename = $filename == '' && $_SERVER['QUERY_STRING'] == '' ? 'index' : $filename;
 
     ?>
     <?php  if(file_exists('styles/'.$filename.'.css')): ?>

@@ -23,7 +23,7 @@
 <?php 
 $controll = new MenuController(Database::getConnection());
 $menu = $controll->getItem(0);
-
+$role = (isset($_SESSION['user']) ? $_SESSION['user']->getRole() : 1);
 
 ?>
 <header class="p-3 bg-dark text-white">
@@ -35,7 +35,6 @@ $menu = $controll->getItem(0);
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
                             <?php 
-                            $role = (isset($_SESSION['user']) ? $_SESSION['user']->getRole() : 1);
                             foreach($menu as $m) {
                                 $permission = $m->getPermission();
                                 if($role >= $permission) {
@@ -78,4 +77,3 @@ $menu = $controll->getItem(0);
             </nav>
         </div>
 </header>
-
